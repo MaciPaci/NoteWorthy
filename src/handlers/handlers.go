@@ -25,6 +25,7 @@ func MessageCreate(session *discordgo.Session, event *discordgo.MessageCreate) {
 		event.ChannelID, event.Author.Username, event.Author.Discriminator, event.Content)
 }
 
+// MessageReactionAdded is a handler for adding reaction to a message
 func MessageReactionAdded(session *discordgo.Session, event *discordgo.MessageReactionAdd) {
 	log.Info("Message reaction added")
 	log.Infof("Details: UserID: %v, ChannelID: %v, MessageID: %v, Emoji: %v",
