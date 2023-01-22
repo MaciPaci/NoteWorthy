@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		log.WithError(err).Fatal("Failed to load config")
 	}
-	_, err = discordgo.New("Bot" + conf.Token)
+	_, err = discordgo.New("Bot " + conf.Token)
 	if err != nil {
 		log.WithError(err).Fatal("Failed to create bot")
 	}
