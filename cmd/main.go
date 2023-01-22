@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	config, err := config.LoadConfig(env.ConfigFilePath)
+	conf, err := config.LoadConfig(env.ConfigFilePath)
 	if err != nil {
 		log.WithError(err).Fatal("Failed to load config")
 	}
-	_, err = discordgo.New("Bot" + config.Token)
+	_, err = discordgo.New("Bot" + conf.Token)
 	if err != nil {
 		log.WithError(err).Fatal("Failed to create bot")
 	}
