@@ -21,13 +21,13 @@ func Ready(session *discordgo.Session, event *discordgo.Ready) {
 // MessageCreate is a handler for message creation event
 func MessageCreate(session *discordgo.Session, event *discordgo.MessageCreate) {
 	log.Info("Message created")
-	log.Infof("Details: Channel: %v, Author: %v#%v, Content: %v",
-		event.ChannelID, event.Author.Username, event.Author.Discriminator, event.Content)
+	log.Infof("Details: Author: %v#%v, Content: %v",
+		event.Author.Username, event.Author.Discriminator, event.Content)
 }
 
 // MessageReactionAdded is a handler for adding reaction to a message
 func MessageReactionAdded(session *discordgo.Session, event *discordgo.MessageReactionAdd) {
 	log.Info("Message reaction added")
-	log.Infof("Details: UserID: %v, ChannelID: %v, MessageID: %v, Emoji: %v",
-		event.UserID, event.ChannelID, event.MessageID, event.Emoji.Name)
+	log.Infof("Details: UserID: %v, MessageID: %v, Emoji: %v",
+		event.UserID, event.MessageID, event.Emoji.Name)
 }

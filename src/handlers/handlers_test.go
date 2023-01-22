@@ -44,7 +44,6 @@ func TestMessageCreateHandlerShouldRunSuccessfully(t *testing.T) {
 	//given
 	messageCreate := &discordgo.MessageCreate{
 		Message: &discordgo.Message{
-			ChannelID: "exampleChannelID",
 			Author: &discordgo.User{
 				Username:      "exampleUsername",
 				Discriminator: "1234",
@@ -62,8 +61,7 @@ func TestMessageCreateHandlerShouldRunSuccessfully(t *testing.T) {
 	assert.Contains(t, output, "Message created")
 	assert.Contains(t, output,
 		"Details: "+
-			"Channel: "+messageCreate.ChannelID+
-			", Author: "+messageCreate.Author.Username+"#"+messageCreate.Author.Discriminator+
+			"Author: "+messageCreate.Author.Username+"#"+messageCreate.Author.Discriminator+
 			", Content: "+messageCreate.Content)
 }
 
@@ -76,7 +74,6 @@ func TestMessageReactionAddedHandlerShouldRunSuccessfully(t *testing.T) {
 			Emoji: discordgo.Emoji{
 				Name: "exampleEmojiName",
 			},
-			ChannelID: "exampleChannelID",
 		},
 	}
 
@@ -90,7 +87,6 @@ func TestMessageReactionAddedHandlerShouldRunSuccessfully(t *testing.T) {
 	assert.Contains(t, output,
 		"Details: "+
 			"UserID: "+messageReactionAdd.UserID+
-			", ChannelID: "+messageReactionAdd.ChannelID+
 			", MessageID: "+messageReactionAdd.MessageID+
 			", Emoji: "+messageReactionAdd.Emoji.Name)
 }
