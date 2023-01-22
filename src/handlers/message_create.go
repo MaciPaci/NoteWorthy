@@ -18,13 +18,13 @@ func MessageCreate(session *discordgo.Session, event *discordgo.MessageCreate) {
 		return
 	}
 
-	_, err := input.ContentToMessage(event.Content)
+	message, err := input.ContentToMessage(event.Content)
 	if err != nil {
 		log.Infof("%v. Skipping", err.Error())
 		return
 	}
 
-	//_ = message.ToMessageEmbed()
+	_ = message.ToMessageEmbed()
 	//_, err = session.ChannelMessageSendEmbed(event.ChannelID, embed)
 	//if err != nil {
 	//	log.Errorf("failed to post message: %v", err.Error())
