@@ -25,10 +25,11 @@ jobs:
           go install honnef.co/go/tools/cmd/staticcheck@latest
           staticcheck ./...
 
+      - name: Golint install
+        run: go install golang.org/x/lint/golint@latest
+
       - name: Golint
-        run: |
-          go install golang.org/x/lint/golint@latest
-          golint ./...
+        run: golint ./...
 
   build:
     runs-on: ubuntu-latest
