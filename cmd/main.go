@@ -1,8 +1,8 @@
 package main
 
 import (
-	"NoteWorthy/assets/env"
-	"NoteWorthy/utils/config"
+	"noteworthy/assets/env"
+	"noteworthy/utils/config"
 
 	"github.com/bwmarrin/discordgo"
 	log "github.com/sirupsen/logrus"

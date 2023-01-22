@@ -1,4 +1,4 @@
-module NoteWorthy
+module noteworthy
 
 go 1.19
 
