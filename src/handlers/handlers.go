@@ -11,17 +11,19 @@ func Register(s *discordgo.Session) {
 	s.AddHandler(MessageReactionAdded)
 }
 
-func Ready(s *discordgo.Session, r *discordgo.Ready) {
+func Ready(session *discordgo.Session, event *discordgo.Ready) {
 	log.Info("Session started")
-	log.Infof("Logged in as %v#%v", r.User.Username, r.User.Discriminator)
+	log.Infof("Logged in as %v#%v", event.User.Username, event.User.Discriminator)
 }
 
-func MessageCreate(s *discordgo.Session, r *discordgo.MessageCreate) {
+func MessageCreate(session *discordgo.Session, event *discordgo.MessageCreate) {
 	log.Info("Message created")
-	log.Infof("Details: Channel: %v, Author: %v, Content: %v", r.ChannelID, r.Author, r.Content)
+	log.Infof("Details: Channel: %v, Author: %v#%v, Content: %v",
+		event.ChannelID, event.Author.Username, event.Author.Discriminator, event.Content)
 }
 
-func MessageReactionAdded(s *discordgo.Session, r *discordgo.MessageReactionAdd) {
+func MessageReactionAdded(session *discordgo.Session, event *discordgo.MessageReactionAdd) {
 	log.Info("Message reaction added")
-	log.Infof("Details: UserID: %v, MessageID: %v, Emoji: %v", r.UserID, r.MessageID, r.Emoji)
+	log.Infof("Details: UserID: %v, ChannelID: %v, MessageID: %v, Emoji: %v",
+		event.UserID, event.ChannelID, event.MessageID, event.Emoji.Name)
 }
