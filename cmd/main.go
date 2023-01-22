@@ -1,6 +1,7 @@
 package main
 
 import (
+	"NoteWorthy/assets/env"
 	"NoteWorthy/utils/config"
 
 	"github.com/bwmarrin/discordgo"
@@ -8,11 +9,11 @@ import (
 )
 
 func main() {
-	conf, err := config.LoadConfig()
+	config, err := config.LoadConfig(env.ConfigFilePath)
 	if err != nil {
 		log.WithError(err).Fatal("Failed to load config")
 	}
-	_, err = discordgo.New("Bot" + conf.Token)
+	_, err = discordgo.New("Bot" + config.Token)
 	if err != nil {
 		log.WithError(err).Fatal("Failed to create bot")
 	}

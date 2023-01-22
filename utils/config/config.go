@@ -1,7 +1,6 @@
 package config
 
 import (
-	"NoteWorthy/assets/env"
 	"encoding/json"
 	"os"
 )
@@ -10,8 +9,8 @@ type Config struct {
 	Token string `json:"bot_token"`
 }
 
-func LoadConfig() (*Config, error) {
-	data, err := os.ReadFile(env.ConfigFilePath)
+func LoadConfig(filepath string) (*Config, error) {
+	data, err := os.ReadFile(filepath)
 	if err != nil {
 		return nil, err
 	}
