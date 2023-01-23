@@ -4,12 +4,15 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-// Context hold important runtime variables
+// Context holds important information about a currently handled event
 type Context struct {
-	Session    *discordgo.Session
-	User       *discordgo.User
-	Message    *discordgo.Message
-	BotMessage *Message
+	Session     *discordgo.Session
+	Guild       *discordgo.Guild
+	TextChannel *discordgo.Channel
+	VoiceChanel *discordgo.Channel
+	User        *discordgo.User
+	Message     *discordgo.Message
+	BotMessage  *Message
 }
 
 // NewContext creates a new Context
@@ -19,5 +22,10 @@ func NewContext(
 	message *discordgo.Message,
 	botMessage *Message,
 ) *Context {
-	return &Context{Session: session, User: user, Message: message, BotMessage: botMessage}
+	return &Context{
+		Session:    session,
+		User:       user,
+		Message:    message,
+		BotMessage: botMessage,
+	}
 }

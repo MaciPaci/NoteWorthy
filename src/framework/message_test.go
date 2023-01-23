@@ -40,7 +40,7 @@ func TestContentToMessageShouldSuccessfullyCreateMessage(t *testing.T) {
 			content: "!exampleCommand",
 			expectedMessage: &Message{
 				Prefix:  "!",
-				Command: "exampleCommand",
+				Command: "examplecommand",
 			},
 		},
 		{
@@ -48,8 +48,8 @@ func TestContentToMessageShouldSuccessfullyCreateMessage(t *testing.T) {
 			content: "!exampleCommand exampleArgs",
 			expectedMessage: &Message{
 				Prefix:  "!",
-				Command: "exampleCommand",
-				Args:    "exampleArgs",
+				Command: "examplecommand",
+				Args:    "exampleargs",
 			},
 		},
 	}
