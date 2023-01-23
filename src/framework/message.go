@@ -1,4 +1,4 @@
-package input
+package framework
 
 import (
 	"errors"
@@ -34,7 +34,8 @@ func (m *Message) ToMessageEmbed() *discordgo.MessageEmbed {
 
 // ContentToMessage converts event content to Message
 func ContentToMessage(content string) (*Message, error) {
-	messagePrefix, messageContent := extractPrefix(content)
+	lowerCaseContent := strings.ToLower(content)
+	messagePrefix, messageContent := extractPrefix(lowerCaseContent)
 
 	if messagePrefix != env.Prefix {
 		return &Message{}, errors.New("no prefix found")

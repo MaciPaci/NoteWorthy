@@ -2,6 +2,7 @@ package main
 
 import (
 	"noteworthy/assets/env"
+	"noteworthy/src/commands"
 	"noteworthy/src/handlers"
 	"noteworthy/utils/config"
 	"os"
@@ -24,6 +25,7 @@ func main() {
 	}
 
 	handlers.Register(session)
+	commands.Register()
 
 	err = session.Open()
 	if err != nil {
