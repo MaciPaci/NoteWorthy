@@ -48,12 +48,6 @@ func MessageCreate(session *discordgo.Session, event *discordgo.MessageCreate) {
 	}
 
 	command(*ctx)
-
-	//_ = message.ToMessageEmbed()
-	//_, err = session.ChannelMessageSendEmbed(event.ChannelID, embed)
-	//if err != nil {
-	//	log.Errorf("failed to post message: %v", err.Error())
-	//}
 }
 
 func messagePostedByBot(session *discordgo.Session, event *discordgo.MessageCreate) bool {
