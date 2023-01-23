@@ -1,7 +1,8 @@
 package handlers
 
 import (
-	"noteworthy/src/input"
+	"noteworthy/src/commands"
+	"noteworthy/src/framework"
 
 	"github.com/bwmarrin/discordgo"
 	log "github.com/sirupsen/logrus"
@@ -18,13 +19,22 @@ func MessageCreate(session *discordgo.Session, event *discordgo.MessageCreate) {
 		return
 	}
 
-	message, err := input.ContentToMessage(event.Content)
+	message, err := framework.ContentToMessage(event.Content)
 	if err != nil {
 		log.Infof("%v. Skipping", err.Error())
 		return
 	}
 
-	_ = message.ToMessageEmbed()
+	command := commands.GetCommand(message.Command)
+	if command.IsNil() {
+		//TODO handle wrong command
+		log.Warnf("unknown command: %v", message.Command)
+		return
+	}
+	ctx := framework.NewContext(session, event.Author, event.Message, message)
+	command(*ctx)
+
+	//_ = message.ToMessageEmbed()
 	//_, err = session.ChannelMessageSendEmbed(event.ChannelID, embed)
 	//if err != nil {
 	//	log.Errorf("failed to post message: %v", err.Error())
